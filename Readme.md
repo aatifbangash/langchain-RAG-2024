@@ -1,0 +1,89 @@
+# generate requirments.txt file
+
+> pip freeze > requirements.txt
+
+# Download and setup
+
+Step-1: Creating & activating venv
+Windows:
+
+```powershell
+  python -m venv venv
+  ./venv/Scripts/activate
+```
+
+Linux:
+
+```bash
+  python -m venv venv
+  source venv/bin/activate
+```
+
+Step-2: Installing Dependencies
+
+```bash
+  pip install -r requirements.txt
+```
+
+Step-3: Running application
+Windows:
+
+```bash
+  > $env:PYTHONDONTWRITEBYTECODE=1;$env:FLASK_APP="app";$env:FLASK_ENV = "development"
+  > flask run
+```
+
+```bash
+pip install python-decouple  #(config('OPENAI_API_KEY'))
+pip install langchain
+pip freeze
+pip install langchain-openai
+```
+
+Linux:
+
+```bash
+  > export PYTHONDONTWRITEBYTECODE=1 FLASK_APP="app" FLASK_ENV="development"
+  > flask run
+```
+
+# Installing Dependencies
+
+```bash
+  pip install -r requirements.txt
+```
+
+# Common Issues
+
+1. Creating **pycache** files
+   Windows-powershell-Solution:
+
+```bash
+  $env:PYTHONDONTWRITEBYTECODE=1
+```
+
+Linux:
+
+```bash
+export PYTHONDONTWRITEBYTECODE=1
+```
+
+# Common Errors
+
+1. While activating venv this error occures in Windows:
+
+   ```bash
+       + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+       + FullyQualifiedErrorId : UnauthorizedAccess
+   ```
+
+   Solution:
+   Execute this command and retry activating venv.
+
+   ```bash
+     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+
+GITBASH remove all **pycache** folders
+
+find . | grep -E "(/**pycache**$|\.pyc$|\.pyo$)" | xargs rm -rf
